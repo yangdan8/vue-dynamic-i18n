@@ -9,7 +9,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@types/js-cookie": "^2.2.4",
     "core-js": "^3.3.2",
+    "js-cookie": "^2.2.1",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-i18n": "^8.15.0",

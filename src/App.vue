@@ -1,16 +1,42 @@
 <template>
   <div id="app">
+    <div id="lang">
+      <div class="content">
+        {{$t('reg_button_register')}}
+      </div>
+      <button @click="chooseLanguage('zh_cn')">cn</button>
+      <button @click="chooseLanguage('en')">en</button>
+      <button @click="chooseLanguage('in')">in</button>
+    </div>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
+<script>
+import { i18n, LangEnum, loadLanguageAsync } from './utils/lang';
+import Cookies from 'js-cookie';
+
+export default {
+  name: 'app',
+  mounted() {
+    this.chooseLanguage(LangEnum.zhCn);
+  },
+  methods: {
+    chooseLanguage(lang) {
+      Cookies.set('lang', lang);
+      loadLanguageAsync();
+    },
+  },
+};
+</script>
+
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
